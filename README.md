@@ -1,1 +1,18 @@
-# mini-project-cpp
+# Money Management
+Program ini dibuat untuk membantu mahasiswa dalam mengatur keuangan finansial nya seperti tracking keluar masuk duit, mencatat
+
+## FITUR KEBANGGAAN
+1. Fitur Utama Input & Output Transaksi
+2. Tampilkan Riwayat Transaksi
+3. Hitung Total Uang
+4. Filter Transaksi Berdasarkan Jenis
+5. Cari Transaksi
+6. Menu Navigasi
+
+## Worker
+1. Fattah Al Mahdi
+2. Fajar Resti Ananda
+3. Juanda V Matanari
+4. Rayhan Aldo Pratama
+5. Nur Eka Oktafia
+
