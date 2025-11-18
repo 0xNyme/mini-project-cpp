@@ -18,6 +18,25 @@ int totalTransaksi = 0;
 
 // Deklarasi terkait fitur fitur yang dibuat
 void tambahTransaksi(Transaksi d[]) {
+    if(totalTransaksi == MAX_TRANSAKSI){
+        cout << "Maaf transaksi sudah penuh!";
+    }else{
+        cout << "Masukkan jenis transaksi (pemasukan/pengeluaran) :" ;
+        cin >> d[totalTransaksi].jenis;
+
+        cin.ignore();
+        cout << "Masukkan kategori barang" ;
+        getline(cin,d[totalTransaksi].kategori);
+
+        cin.ignore();
+        cout << "Masukkan nominal : ";
+        cin >> d[totalTransaksi].jumlah;
+
+        cout << "Masukkan Tanggal :";
+        getline()
+
+        totalTransaksi++;
+    }
 
 }
 
