@@ -33,7 +33,7 @@ void tambahTransaksi(Transaksi d[]) {
         cin >> d[totalTransaksi].jumlah;
 
         cout << "Masukkan Tanggal :";
-        getline()
+        getline(cin,d[totalTransaksi].tanggal);
 
         totalTransaksi++;
     }
