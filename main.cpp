@@ -6,22 +6,48 @@ const int MAX_TRANSAKSI = 100;
 
 struct Transaksi {
     string jenis;     
-    string kategori;
+    string kategori; // pemasukan atau pengeluaran
     int jumlah;
     string tanggal;
 };
 
 // global static array
 Transaksi daftar[MAX_TRANSAKSI];
+
 int totalTransaksi = 0;
 
 // Deklarasi terkait fitur fitur yang dibuat
-void tambahTransaksi() {
-    cout << "Fitur transaksi" << endl;
+void tambahTransaksi(Transaksi d[]) {
+    if(totalTransaksi == MAX_TRANSAKSI){
+        cout << "Maaf transaksi sudah penuh!";
+    }else{
+        cout << "Masukkan jenis transaksi (pemasukan/pengeluaran) :" ;
+        cin >> d[totalTransaksi].jenis;
+
+        cin.ignore();
+        cout << "Masukkan kategori barang" ;
+        getline(cin,d[totalTransaksi].kategori);
+
+        cin.ignore();
+        cout << "Masukkan nominal : ";
+        cin >> d[totalTransaksi].jumlah;
+
+        cout << "Masukkan Tanggal :";
+        getline(cin,d[totalTransaksi].tanggal);
+
+        totalTransaksi++;
+    }
+
 }
 
-void tampilkanTransaksi(){
-    cout << "Fitur Menampilkan Transaksi" << endl;
+void tampilkanTransaksi(Transaksi d[]){
+    if(totalTransaksi == 0){
+        cout << "Belum ada transaksi." << endl;
+    }else{
+        for(int i = 0 ; i < totalTransaksi;i++){
+            cout << "No " << i+1 << " [ " << d[i].jenis << " ]" << "Kategori " << d[i].kategori << "- Rp " << d[i].jumlah << " ( " << d[i].tanggal << " )" << endl;
+        }
+    }
 }
 
 void tampilkanTotal() {
@@ -29,7 +55,33 @@ void tampilkanTotal() {
 }
 
 void filterTransaksi() {
-    cout << "Fitur Filter Transaksi" << endl;
+        if (totalTransaksi == 0) {
+        cout << "Belum ada transaksi." << endl;
+        return;
+    }
+
+    string filter;
+    cout << "=== Filter Transaksi ===";
+    cout << "Transaksi Apa? (Pemasukan/Pengeluaran): ";
+    cin >> filter;
+
+    cout << "HASIL FILTER (" << filter << "):";
+
+    bool ada = false;
+    for (int i = 0; i < totalTransaksi; i++) {
+        if (daftar[i].kategori == filter) {
+            ada = true;
+
+            cout << "No " << i+1
+                 << " | " << daftar[i].jenis
+                 << " | Rp " << daftar[i].jumlah
+                 << " | " << daftar[i].tanggal << endl;
+        }
+    }
+
+    if (!ada) {
+        cout << "Tidak ada transaksi kategori '" << filter << "'" endl;
+    }
 }
 
 void cariTransaksi() {
@@ -61,49 +113,19 @@ int main() {
 
         switch (pilihan) {
             case 1:
-            tambahTransaksi();
+            tambahTransaksi(daftar);
             break;
 
             case 2:
-            tampilkanTransaksi();
+            tampilkanTransaksi(daftar);
             break;
 
             case 3:
             tampilkanTotal();
             break;
 
-            //case 4:
-void filterTransaksi() {
-    if (totalTransaksi == 0) {
-        cout << "Belum ada transaksi." << endl;
-        return;
-    }
-
-    string filter;
-    cout << "=== Filter Transaksi ===";
-    cout << "Transaksi Apa? (Pemasukan/Pengeluaran): ";
-    cin >> filter;
-
-    cout << "HASIL FILTER (" << filter << "):";
-
-    bool ada = false;
-    for (int i = 0; i < totalTransaksi; i++) {
-        if (daftar[i].kategori == filter) {
-            ada = true;
-
-            cout << "No " << i+1
-                 << " | " << daftar[i].jenis
-                 << " | Rp " << daftar[i].jumlah
-                 << " | " << daftar[i].tanggal << endl;
-        }
-    }
-
-    if (!ada) {
-        cout << "Tidak ada transaksi kategori '" << filter << "'" endl;
-    }
-}
-
-            
+            case 4:
+            filterTransaksi();
             break;
 
             case 5:
@@ -116,6 +138,5 @@ void filterTransaksi() {
 
     return 0;
 }
-
 
 
