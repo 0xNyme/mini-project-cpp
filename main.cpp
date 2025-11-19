@@ -55,7 +55,33 @@ void tampilkanTotal() {
 }
 
 void filterTransaksi() {
-    cout << "Fitur Filter Transaksi" << endl;
+        if (totalTransaksi == 0) {
+        cout << "Belum ada transaksi." << endl;
+        return;
+    }
+
+    string filter;
+    cout << "=== Filter Transaksi ===";
+    cout << "Transaksi Apa? (Pemasukan/Pengeluaran): ";
+    cin >> filter;
+
+    cout << "HASIL FILTER (" << filter << "):";
+
+    bool ada = false;
+    for (int i = 0; i < totalTransaksi; i++) {
+        if (daftar[i].kategori == filter) {
+            ada = true;
+
+            cout << "No " << i+1
+                 << " | " << daftar[i].jenis
+                 << " | Rp " << daftar[i].jumlah
+                 << " | " << daftar[i].tanggal << endl;
+        }
+    }
+
+    if (!ada) {
+        cout << "Tidak ada transaksi kategori '" << filter << "'" endl;
+    }
 }
 
 void cariTransaksi() {
@@ -98,38 +124,8 @@ int main() {
             tampilkanTotal();
             break;
 
-            //case 4:
-void filterTransaksi() {
-    if (totalTransaksi == 0) {
-        cout << "Belum ada transaksi." << endl;
-        return;
-    }
-
-    string filter;
-    cout << "=== Filter Transaksi ===";
-    cout << "Transaksi Apa? (Pemasukan/Pengeluaran): ";
-    cin >> filter;
-
-    cout << "HASIL FILTER (" << filter << "):";
-
-    bool ada = false;
-    for (int i = 0; i < totalTransaksi; i++) {
-        if (daftar[i].kategori == filter) {
-            ada = true;
-
-            cout << "No " << i+1
-                 << " | " << daftar[i].jenis
-                 << " | Rp " << daftar[i].jumlah
-                 << " | " << daftar[i].tanggal << endl;
-        }
-    }
-
-    if (!ada) {
-        cout << "Tidak ada transaksi kategori '" << filter << "'" endl;
-    }
-}
-
-            
+            case 4:
+            filterTransaksi();
             break;
 
             case 5:
@@ -142,6 +138,5 @@ void filterTransaksi() {
 
     return 0;
 }
-
 
 
