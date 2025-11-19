@@ -6,26 +6,64 @@ const int MAX_TRANSAKSI = 100;
 
 struct Transaksi {
     string jenis;     
-    string kategori;
+    string kategori; // pemasukan atau pengeluaran
     int jumlah;
     string tanggal;
 };
 
 // global static array
 Transaksi daftar[MAX_TRANSAKSI];
+
 int totalTransaksi = 0;
 
 // Deklarasi terkait fitur fitur yang dibuat
-void tambahTransaksi() {
-    cout << "Fitur transaksi" << endl;
+void tambahTransaksi(Transaksi d[]) {
+    if(totalTransaksi == MAX_TRANSAKSI){
+        cout << "Maaf transaksi sudah penuh!";
+    }else{
+        cout << "Masukkan jenis transaksi (pemasukan/pengeluaran) :" ;
+        cin >> d[totalTransaksi].jenis;
+
+        cin.ignore();
+        cout << "Masukkan kategori barang" ;
+        getline(cin,d[totalTransaksi].kategori);
+
+        cin.ignore();
+        cout << "Masukkan nominal : ";
+        cin >> d[totalTransaksi].jumlah;
+
+        cout << "Masukkan Tanggal :";
+        getline(cin,d[totalTransaksi].tanggal);
+
+        totalTransaksi++;
+    }
+
 }
 
-void tampilkanTransaksi(){
-    cout << "Fitur Menampilkan Transaksi" << endl;
+void tampilkanTransaksi(Transaksi d[]){
+    if(totalTransaksi == 0){
+        cout << "Belum ada transaksi." << endl;
+    }else{
+        for(int i = 0 ; i < totalTransaksi;i++){
+            cout << "No " << i+1 << " [ " << d[i].jenis << " ]" << "Kategori " << d[i].kategori << "- Rp " << d[i].jumlah << " ( " << d[i].tanggal << " )" << endl;
+        }
+    }
 }
 
 void tampilkanTotal() {
-    cout << "Fitur Menampilkan Total Uang" << endl;
+    int totalPemasukan = 0;
+    int totalPengeluaran = 0;
+
+    for (int i = 0; i < totalTransaksi; i++){
+        if (daftar[i].jenis == "pemasukan"){
+            totalPemasukan += daftar[i].jumlah;
+        } else if (daftar[i].jenis == "pengeluaran"){
+            totalPengeluaran += daftar[i].jumlah;
+        }
+    }
+    cout << "Total Pemasukan: Rp " << totalPemasukan << endl;
+    cout << "Total Pengeluaran: Rp " << totalPengeluaran << endl;
+    cout << "Saldo Akhir: Rp " << (totalPemasukan - totalPengeluaran) << endl;
 }
 
 void filterTransaksi() {
@@ -61,11 +99,11 @@ int main() {
 
         switch (pilihan) {
             case 1:
-            tambahTransaksi();
+            tambahTransaksi(daftar);
             break;
 
             case 2:
-            tampilkanTransaksi();
+            tampilkanTransaksi(daftar);
             break;
 
             case 3:
