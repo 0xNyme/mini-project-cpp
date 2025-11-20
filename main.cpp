@@ -239,12 +239,17 @@ int main() {
             case 5:
             cariTransaksi();
             break;
+
+            default :
+            cout << "Input tidak ada dalam daftar menu!" << endl;
+            break;
         }
 
 
-    } while (pilihan <= 5 && pilihan != 0);
+    } while (pilihan != 0);
 
-    cout << "\nTerima kasih telah menggunakan aplikasi ini." << endl;
+
+
     return 0;
 }
 
