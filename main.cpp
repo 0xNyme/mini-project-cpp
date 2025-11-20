@@ -198,11 +198,11 @@ void menu() {
     cout << "\n+=======================================+" << endl;
     cout << "|      APLIKASI MONEY MANAGEMENT        |" << endl;
     cout << "+=======================================+" << endl;
-    cout << "| 1. Tambah Transaksi                   |" << endl;
-    cout << "| 2. Lihat Semua Transaksi              |" << endl;
+    cout << "| 1. Tambah Data                        |" << endl;
+    cout << "| 2. Lihat Semua Data                   |" << endl;
     cout << "| 3. Lihat Total Uang                   |" << endl;
-    cout << "| 4. Filter Transaksi                   |" << endl;
-    cout << "| 5. Cari Transaksi                     |" << endl;
+    cout << "| 4. Filter Data                        |" << endl;
+    cout << "| 5. Cari Data                          |" << endl;
     cout << "| 0. Keluar                             |" << endl; 
     cout << "+=======================================+" << endl;
 
